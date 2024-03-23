@@ -70,7 +70,13 @@ const AuthorDetailPage: React.FC = () => {
 
         <Flex align="center" as="ul" direction="column" justify="center">
           {author.books.map((book) => (
-            <BookListItem key={book.id} bookId={book.id} />
+            <BookListItem
+              key={book.id}
+              bookId={book.id}
+              description={book.description}
+              image={book.image}
+              name={book.name}
+            />
           ))}
           {author.books.length === 0 && (
             <>

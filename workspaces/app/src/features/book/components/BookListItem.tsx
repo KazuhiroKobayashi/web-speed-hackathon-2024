@@ -9,7 +9,6 @@ import { Spacer } from '../../../foundation/components/Spacer';
 import { Text } from '../../../foundation/components/Text';
 import { useImage } from '../../../foundation/hooks/useImage';
 import { Color, Radius, Space, Typography } from '../../../foundation/styles/variables';
-import { useBook } from '../hooks/useBook';
 
 const _Wrapper = styled.li`
   width: 100%;
@@ -27,32 +26,36 @@ const _ImgWrapper = styled.div`
   }
 `;
 
-type Props = {
+type BookListItemProps = {
   bookId: string;
+  description: string;
+  image: {
+    alt: string;
+    id: string;
+  };
+  name: string;
 };
 
-export const BookListItem: React.FC<Props> = ({ bookId }) => {
-  const { data: book } = useBook({ params: { bookId } });
-
-  const imageUrl = useImage({ height: 64, imageId: book.image.id, width: 64 });
+export const BookListItem: React.FC<BookListItemProps> = ({ bookId, description, image, name }) => {
+  const imageUrl = useImage({ height: 64, imageId: image.id, width: 64 });
 
   return (
     <_Wrapper>
-      <_Link href={`/books/${book.id}`}>
+      <_Link href={`/books/${bookId}`}>
         <Spacer height={Space * 1.5} />
         <Flex align="flex-start" gap={Space * 2.5} justify="flex-start">
           {imageUrl != null && (
             <_ImgWrapper>
-              <Image alt={book.name} height={64} objectFit="cover" src={imageUrl} width={64} />
+              <Image alt={name} height={64} objectFit="cover" src={imageUrl} width={64} />
             </_ImgWrapper>
           )}
           <Box width="100%">
             <Flex align="flex-start" direction="column" gap={Space * 1} justify="flex-start">
               <Text color={Color.MONO_100} typography={Typography.NORMAL16} weight="bold">
-                {book.name}
+                {name}
               </Text>
               <Text as="p" color={Color.MONO_80} typography={Typography.NORMAL12}>
-                {book.description}
+                {description}
               </Text>
             </Flex>
           </Box>
