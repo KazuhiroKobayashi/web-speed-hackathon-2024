@@ -15,7 +15,9 @@ const main = async () => {
     const { ClientApp } = await import('@wsh-2024/app/src/index');
     ReactDOM.hydrateRoot(
       root!,
-      <SWRConfig value={{ revalidateIfStale: true, revalidateOnFocus: false, revalidateOnReconnect: false }}>
+      <SWRConfig
+        value={{ revalidateIfStale: true, revalidateOnFocus: true, revalidateOnReconnect: true, suspense: true }}
+      >
         <BrowserRouter>
           <ClientApp />
         </BrowserRouter>
