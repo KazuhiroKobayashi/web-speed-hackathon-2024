@@ -61,7 +61,7 @@ const RankingCard: React.FC<RankingCardProps> = ({ author, bookId, description, 
 
   return (
     <_Wrapper>
-      <_Link href={`/books/${bookId}`}>
+      <_Link to={`/books/${bookId}`}>
         <Spacer height={Space * 1.5} />
         <Flex align="flex-start" gap={Space * 2.5} justify="flex-start">
           {imageUrl != null && (
