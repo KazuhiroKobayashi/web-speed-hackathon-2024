@@ -18,7 +18,7 @@ export default defineConfig(async (): Promise<Options[]> => {
         API_URL: process.env['KOYEB_PUBLIC_DOMAIN']
           ? `https://${process.env['KOYEB_PUBLIC_DOMAIN']}`
           : 'http://localhost:8000',
-          NODE_ENV: 'production',
+        NODE_ENV: 'production',
       },
       format: 'cjs',
       legacyOutput: false,

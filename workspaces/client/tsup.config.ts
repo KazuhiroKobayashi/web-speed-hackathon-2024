@@ -49,15 +49,16 @@ export default defineConfig(async (): Promise<Options[]> => {
         }),
       ],
       format: 'iife',
+      legacyOutput: false,
       loader: {
         '.json?file': 'file',
         '.wasm': 'binary',
       },
       metafile: false,
       minify: true,
-      minifyWhitespace: true,
       minifyIdentifiers: true,
       minifySyntax: true,
+      minifyWhitespace: true,
       outDir: OUTPUT_DIR,
       platform: 'browser',
       shims: false,
@@ -65,7 +66,6 @@ export default defineConfig(async (): Promise<Options[]> => {
       splitting: true,
       target: 'chrome58',
       treeshake: true,
-      legacyOutput: false,
     },
   ];
 });
