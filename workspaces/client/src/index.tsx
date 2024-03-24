@@ -2,17 +2,17 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { SWRConfig } from 'swr';
 
-import { AdminApp } from '@wsh-2024/admin/src/index';
-import { ClientApp } from '@wsh-2024/app/src/index';
-
-import { preloadImages } from './utils/preloadImages';
 import { registerServiceWorker } from './utils/registerServiceWorker';
 
-document.addEventListener('DOMContentLoaded', () => {
+const main = async () => {
+  await registerServiceWorker();
+
   const root = document.getElementById('root');
   if (window.location.pathname.startsWith('/admin')) {
+    const { AdminApp } = await import('@wsh-2024/admin/src/index');
     ReactDOM.createRoot(root!).render(<AdminApp />);
   } else {
+    const { ClientApp } = await import('@wsh-2024/app/src/index');
     ReactDOM.hydrateRoot(
       root!,
       <SWRConfig value={{ revalidateIfStale: true, revalidateOnFocus: false, revalidateOnReconnect: false }}>
@@ -22,11 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
       </SWRConfig>,
     );
   }
-});
-
-const main = async () => {
-  await registerServiceWorker();
-  // await preloadImages();
 };
 
 main().catch(console.error);
