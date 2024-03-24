@@ -52,7 +52,15 @@ export const EpisodeListItem: React.FC<EpisodeListItemProps> = ({
         <Flex align="flex-start" gap={Space * 2.5} justify="flex-start">
           {imageUrl != null && (
             <_ImgWrapper>
-              <Image alt={name} height={96} objectFit="cover" src={imageUrl} width={96} />
+              <Image
+                alt={name}
+                decoding="async"
+                height={96}
+                loading="lazy"
+                objectFit="cover"
+                src={imageUrl}
+                width={96}
+              />
             </_ImgWrapper>
           )}
           <Box width="100%">

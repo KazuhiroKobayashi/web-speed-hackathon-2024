@@ -277,7 +277,9 @@ export const EpisodeDetailEditor: React.FC<Props> = ({ book, episode }) => {
                   _groupFocusVisible={{ opacity: 0.75 }}
                   _groupHover={{ opacity: 0.75 }}
                   alt={episode?.image.id}
+                  decoding="async"
                   height={200}
+                  loading="lazy"
                   src={
                     thumbnailUrl ??
                     (episode != null

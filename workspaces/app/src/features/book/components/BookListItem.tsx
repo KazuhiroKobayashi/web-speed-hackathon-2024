@@ -46,7 +46,15 @@ export const BookListItem: React.FC<BookListItemProps> = ({ bookId, description,
         <Flex align="flex-start" gap={Space * 2.5} justify="flex-start">
           {imageUrl != null && (
             <_ImgWrapper>
-              <Image alt={name} height={64} objectFit="cover" src={imageUrl} width={64} />
+              <Image
+                alt={name}
+                decoding="async"
+                height={64}
+                loading="lazy"
+                objectFit="cover"
+                src={imageUrl}
+                width={64}
+              />
             </_ImgWrapper>
           )}
           <Box width="100%">

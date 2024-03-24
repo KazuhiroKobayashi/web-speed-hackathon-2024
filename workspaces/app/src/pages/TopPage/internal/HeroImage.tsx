@@ -6,5 +6,5 @@ const _Image = styled.img`
 `;
 
 export const HeroImage: React.FC = () => {
-  return <_Image alt="Cyber TOON" src="/assets/hero.avif" />;
+  return <_Image alt="Cyber TOON" decoding="async" loading="lazy" src="/assets/hero.avif" />;
 };
